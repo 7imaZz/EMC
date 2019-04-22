@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "317825416297",
+    "firebase_url": "https://emcfirebaseproject.firebaseio.com",
+    "project_id": "emcfirebaseproject",
+    "storage_bucket": "emcfirebaseproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317825416297:android:53492b6e4a3f53f4",
+        "android_client_info": {
+          "package_name": "com.example.emc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317825416297-k2f6utqol8otatc1t472c2j621v69o7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.emc",
+            "certificate_hash": "7c87d433cf26bc034b07a18f19ba931e75ab94f5"
+          }
+        },
+        {
+          "client_id": "317825416297-t0pr4ktrg0dv4ltvn6qtqh694n7db4h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD027H3uqvHhZREl_PsUggju0B3hIMDa00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317825416297-t0pr4ktrg0dv4ltvn6qtqh694n7db4h3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
