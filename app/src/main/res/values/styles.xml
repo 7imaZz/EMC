@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="GalleryTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/galleryColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="EventTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/eventsColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="EduTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/eduColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="InfoTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/infoColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>

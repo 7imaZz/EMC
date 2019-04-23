@@ -9,10 +9,33 @@
         android:roundIcon="@mipmap/emc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".StaffActivity"
+            android:label="Staff">
+        </activity>
+        <activity
+            android:name=".InfoActivity"
+            android:label="Info"
+            android:theme="@style/InfoTheme">
+        </activity>
+        <activity
+            android:name=".EduActivity"
+            android:label="Educational"
+            android:theme="@style/EduTheme">
+        </activity>
+        <activity
+            android:name=".EventsActivity"
+            android:label="Events"
+            android:theme="@style/EventTheme">
+        </activity>
+        <activity
+            android:name=".GalleryActivity"
+            android:label="Gallery"
+            android:theme="@style/GalleryTheme">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
