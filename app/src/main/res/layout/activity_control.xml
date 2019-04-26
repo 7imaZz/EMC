@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="10dp"
     android:layout_marginTop="30dp"
-    tools:context=".Activities.MainActivity">
+    tools:context=".Activities.ControlActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +18,9 @@
         android:padding="10dp"
         android:layout_weight="1"
         android:clipToPadding="false">
-        
+
         <android.support.v7.widget.CardView
-            android:id="@+id/cv_gallery"
+            android:id="@+id/cv_add_object"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
@@ -35,7 +35,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circle"
-                    android:src="@drawable/ic_photo_black_24dp"
+                    android:src="@drawable/ic_add_to_photos_black_24dp"
                     android:padding="10dp"/>
                 <View
                     android:layout_width="match_parent"
@@ -45,20 +45,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gallery"
+                    android:text="Control Gallery"
                     android:textStyle="bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pics of all museum contents statues/paintings/etc.."
+                    android:text="Add new objects to gallery, edit existing ones or delete'em"
                     android:gravity="center"
                     android:padding="8dp"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cv_events"
+            android:id="@+id/cv_make_event"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
@@ -73,7 +73,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circle2"
-                    android:src="@drawable/ic_event_black_24dp"
+                    android:src="@drawable/ic_event_note_black_24dp"
                     android:padding="10dp"/>
                 <View
                     android:layout_width="match_parent"
@@ -83,13 +83,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Events"
+                    android:text="Control Events"
                     android:textStyle="bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Events that happens periodically at the museum"
+                    android:text="Make new events, edit existing ones or end'em"
                     android:gravity="center"
                     android:padding="8dp"/>
             </LinearLayout>
@@ -107,7 +107,7 @@
         android:padding="10dp">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cv_edu"
+            android:id="@+id/cv_control_edu"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
@@ -125,7 +125,7 @@
                     android:layout_height="64dp"
                     android:background="@drawable/circle3"
                     android:padding="10dp"
-                    android:src="@drawable/ic_school_black_24dp" />
+                    android:src="@drawable/ic_border_color_black_24dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Educational"
+                    android:text="Control Edu"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
@@ -145,12 +145,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Educational courses that the museum provides for people" />
+                    android:text="Announce for new educational course, review applicants info, and more" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cv_info"
+            android:id="@+id/cv_settings"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp"
@@ -168,7 +168,7 @@
                     android:layout_height="64dp"
                     android:background="@drawable/circle4"
                     android:padding="10dp"
-                    android:src="@drawable/ic_info_black_24dp" />
+                    android:src="@drawable/ic_settings_black_24dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -179,16 +179,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Info"
+                    android:text="Settings"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="All information you need know about the museum" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

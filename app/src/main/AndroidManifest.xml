@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.emc">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/emc"
@@ -9,33 +11,32 @@
         android:roundIcon="@mipmap/emc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EventControlActivity"></activity>
+        <activity android:name=".Activities.ControlActivity" />
+        <activity android:name=".Activities.ObjectActivity" />
         <activity
-            android:name=".StaffActivity"
-            android:label="Staff">
-        </activity>
+            android:name=".Activities.StaffActivity"
+            android:label="Staff" />
         <activity
-            android:name=".InfoActivity"
+            android:name=".Activities.InfoActivity"
             android:label="Info"
-            android:theme="@style/InfoTheme">
-        </activity>
+            android:theme="@style/InfoTheme" />
         <activity
-            android:name=".EduActivity"
+            android:name=".Activities.EduActivity"
             android:label="Educational"
-            android:theme="@style/EduTheme">
-        </activity>
+            android:theme="@style/EduTheme" />
         <activity
-            android:name=".EventsActivity"
+            android:name=".Activities.EventsActivity"
             android:label="Events"
-            android:theme="@style/EventTheme">
-        </activity>
+            android:theme="@style/EventTheme" />
         <activity
-            android:name=".GalleryActivity"
+            android:name=".Activities.GalleryActivity"
             android:label="Gallery"
-            android:theme="@style/GalleryTheme">
-        </activity>
-        <activity android:name=".MainActivity">
+            android:theme="@style/GalleryTheme" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

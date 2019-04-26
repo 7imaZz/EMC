@@ -8,4 +8,6 @@
     <color name="eventsColor">#FF4500</color>
     <color name="eduColor">#DC143C</color>
     <color name="infoColor">#800080</color>
+    <color name="white">#FFFFFF</color>
+    <color name="signupColor">#066e8a</color>
 </resources>

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.EventsActivity">
+    tools:context=".EventControlActivity">
 
     <ListView
-        android:id="@+id/lv_showevents"
+        android:id="@+id/lv_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>

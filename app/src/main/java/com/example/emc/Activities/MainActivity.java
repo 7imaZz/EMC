@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.emc.R;
 
 public class MainActivity extends AppCompatActivity {
 
