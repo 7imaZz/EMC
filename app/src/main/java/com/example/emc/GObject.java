@@ -8,19 +8,18 @@ public class GObject {
     private String name;
     private String bornDie;
     private String details;
-    private Uri imgId;
+    private String imgId;
+    private String id;
 
-    public GObject(String name, String bornDie, String details, Uri imgId) {
+    public GObject() {
+    }
+
+    public GObject(String name, String bornDie, String details, String imgId, String id) {
         this.name = name;
         this.bornDie = bornDie;
         this.details = details;
         this.imgId = imgId;
-    }
-
-    public GObject(String name, String bornDie, String details) {
-        this.name = name;
-        this.bornDie = bornDie;
-        this.details = details;
+        this.id = id;
     }
 
     public String getName() {
@@ -35,7 +34,31 @@ public class GObject {
         return details;
     }
 
-    public Uri getImgId() {
+    public String getImgId() {
         return imgId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBornDie(String bornDie) {
+        this.bornDie = bornDie;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public void setImgId(String imgId) {
+        this.imgId = imgId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

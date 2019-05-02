@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.emc.GObject;
 import com.example.emc.ItemClickListener;
@@ -71,7 +72,8 @@ public class ObjectsAdapter extends RecyclerView.Adapter<ObjectsAdapter.ObjectHo
         objectHolder.nameTextView.setText(currentObject.getName());
         objectHolder.bornDieTextView.setText(currentObject.getBornDie());
 
-        final Uri uri = currentObject.getImgId();
+        final String s = currentObject.getImgId();
+        Uri uri = Uri.parse(s);
         Picasso.get().load(uri).into(objectHolder.imageView);
 
         objectHolder.setItemClickListener(new ItemClickListener() {
@@ -82,7 +84,7 @@ public class ObjectsAdapter extends RecyclerView.Adapter<ObjectsAdapter.ObjectHo
                 intent.putExtra("name", currentObject.getName());
                 intent.putExtra("date", currentObject.getBornDie());
                 intent.putExtra("description", currentObject.getDetails());
-                intent.putExtra("pic", currentObject.getImgId().toString());
+                intent.putExtra("pic", currentObject.getImgId());
 
                 context.startActivity(intent);
             }

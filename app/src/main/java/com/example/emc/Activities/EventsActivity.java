@@ -7,7 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.emc.Event;
 import com.example.emc.EventAdapter;
@@ -27,11 +31,14 @@ public class EventsActivity extends AppCompatActivity {
     //Declaring Firebase Vars
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private ChildEventListener mChildEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = findViewById(R.id.lv_showevents);
 
@@ -45,7 +52,15 @@ public class EventsActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference().child("Events");
 
 
-        databaseReference.addChildEventListener(new ChildEventListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Event event = (Event) parent.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), event.getId()+"",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Event event = dataSnapshot.getValue(Event.class);
@@ -54,12 +69,12 @@ public class EventsActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                listView.setAdapter(adapter);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
+                listView.setAdapter(adapter);
             }
 
             @Override
@@ -71,6 +86,17 @@ public class EventsActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        databaseReference.addChildEventListener(mChildEventListener);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

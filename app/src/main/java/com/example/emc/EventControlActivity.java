@@ -1,5 +1,6 @@
 package com.example.emc;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.EditText;
@@ -49,6 +51,8 @@ public class EventControlActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_control);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = findViewById(R.id.lv_events);
 
@@ -93,27 +97,47 @@ public class EventControlActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.add_event){
+        if (id == android.R.id.home){
+            finish();
+        }
+
+        else if (id == R.id.add_event){
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder.setTitle("Make an event");
 
             ScrollView scrollView = new ScrollView(this);
+            scrollView.setClickable(true);
+            scrollView.setFocusableInTouchMode(true);
 
             LinearLayout rootLinearLayout = new LinearLayout(this);
             rootLinearLayout.setOrientation(LinearLayout.VERTICAL);
+            rootLinearLayout.setClickable(true);
+            rootLinearLayout.setFocusableInTouchMode(true);
 
             final EditText eventName = new EditText(this);
             eventName.setHint("Enter the name of event");
             eventName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             rootLinearLayout.addView(eventName);
+            eventName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus){
+                        hideKeyboard(v);
+                    }
+                }
+            });
 
             CalendarView calendarView = new CalendarView(this);
             rootLinearLayout.addView(calendarView);
+            calendarView.setClickable(true);
+            calendarView.setFocusableInTouchMode(true);
 
             TimePicker timePicker = new TimePicker(this);
             rootLinearLayout.addView(timePicker);
+            timePicker.setFocusableInTouchMode(true);
+            timePicker.setClickable(true);
 
             final EditText eventDescription = new EditText(this);
             eventDescription.setHint("Description");
@@ -121,6 +145,14 @@ public class EventControlActivity extends AppCompatActivity {
             eventDescription.setMaxLines(10);
             eventDescription.setLines(5);
             rootLinearLayout.addView(eventDescription);
+            eventDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus){
+                        hideKeyboard(v);
+                    }
+                }
+            });
 
 
             scrollView.addView(rootLinearLayout);
@@ -153,8 +185,10 @@ public class EventControlActivity extends AppCompatActivity {
                     event.setName(eventName.getText().toString());
                     event.setPeopleNumber(0);
                     event.setDescription(eventDescription.getText().toString());
+                    event.setId(databaseReference.push().getKey());
+                    databaseReference.child(event.getId()).setValue(event);
 
-                    databaseReference.push().setValue(event);
+
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
@@ -171,5 +205,10 @@ public class EventControlActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_event, menu);
         return true;
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -22,6 +23,8 @@ public class ObjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         objectImageView = findViewById(R.id.img_obj);
         titleTextView = findViewById(R.id.tv_obj_title);
         dateTextView = findViewById(R.id.tv_obj_date);
@@ -38,5 +41,14 @@ public class ObjectActivity extends AppCompatActivity {
 
         Uri uri = Uri.parse(pic);
         Picasso.get().load(uri).into(objectImageView);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

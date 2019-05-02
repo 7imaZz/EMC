@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/emc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventControlActivity"></activity>
+        <activity android:name=".CourseControlActivity"></activity>
+        <activity android:name=".EduControlActivity" />
+        <activity android:name=".GalleryControlActivity" />
+        <activity android:name=".EventControlActivity" />
         <activity android:name=".Activities.ControlActivity" />
         <activity android:name=".Activities.ObjectActivity" />
         <activity

@@ -8,6 +8,9 @@ public class Event {
     private String time;
     private int peopleNumber;
     private String description;
+    private int going = -1;
+    private String id;
+
 
 
     public Event(String name, String dayNumber, String month, String dayName, String time, int peopleNumber, String description) {
@@ -21,6 +24,17 @@ public class Event {
     }
 
     public Event() {
+    }
+
+    public Event(String name, String dayNumber, String month, String dayName, String time, int peopleNumber, String description, String id) {
+        this.name = name;
+        this.dayNumber = dayNumber;
+        this.month = month;
+        this.dayName = dayName;
+        this.time = time;
+        this.peopleNumber = peopleNumber;
+        this.description = description;
+        this.id = id;
     }
 
     public Event(String name, String dayNumber, String month, String dayName, int peopleNumber, String description) {
@@ -86,6 +100,22 @@ public class Event {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getGoing() {
+        return going;
+    }
+
+    public void setGoing(int going) {
+        this.going = going;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
