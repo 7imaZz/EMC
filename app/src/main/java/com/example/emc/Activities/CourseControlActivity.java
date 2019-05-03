@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +8,15 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.emc.Course;
+import com.example.emc.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class CourseControlActivity extends AppCompatActivity {
-    private EditText courseNameEditText, requirementsEditText;
+    private EditText courseNameEditText, requirementsEditText, costEditText;
     private CalendarView calendarView;
     private TextView doneButton;
 
@@ -32,6 +35,7 @@ public class CourseControlActivity extends AppCompatActivity {
         requirementsEditText = findViewById(R.id.ed_requirements);
         calendarView = findViewById(R.id.cal_deadline_date);
         doneButton = findViewById(R.id.tv_done);
+        costEditText = findViewById(R.id.ed_course_cost);
 
         final Course course = new Course();
 
@@ -51,8 +55,10 @@ public class CourseControlActivity extends AppCompatActivity {
             public void onClick(View v) {
                 course.setName(courseNameEditText.getText().toString());
                 course.setRequirements(requirementsEditText.getText().toString());
+                course.setCost(costEditText.getText().toString());
                 course.setId(databaseReference.push().getKey());
                 databaseReference.child(course.getId()).setValue(course);
+                Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Adapters;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.example.emc.Course;
+import com.example.emc.R;
 
 import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
@@ -32,6 +35,9 @@ public class CourseAdapter extends ArrayAdapter<Course>{
 
         TextView courseDeadline= view.findViewById(R.id.tv_deadline);
         courseDeadline.setText("Applying will end in "+currentCourse.getDate());
+
+        TextView courseCost = view.findViewById(R.id.tv_course_cost);
+        courseCost.setText("Cost: "+currentCourse.getCost()+"$");
 
         return view;
     }

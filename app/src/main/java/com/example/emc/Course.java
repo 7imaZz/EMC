@@ -5,6 +5,7 @@ public class Course {
     private String date;
     private String requirements;
     private String id;
+    private String cost;
 
     public Course() {
     }
@@ -14,6 +15,14 @@ public class Course {
         this.date = date;
         this.requirements = requirements;
         this.id = id;
+    }
+
+    public Course(String name, String date, String requirements, String id, String cost) {
+        this.name = name;
+        this.date = date;
+        this.requirements = requirements;
+        this.id = id;
+        this.cost = cost;
     }
 
     public String getName() {
@@ -46,5 +55,13 @@ public class Course {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
     }
 }

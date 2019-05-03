@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.emc.Adapters.CourseAdapter;
+import com.example.emc.Course;
+import com.example.emc.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

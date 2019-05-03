@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".GalleryControlActivity">
+    tools:context=".Activities.GalleryControlActivity">
 
     <ListView
         android:id="@+id/rv_control_objects"

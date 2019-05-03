@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Activities;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,8 @@ import android.widget.Toast;
 
 import com.example.emc.Adapters.ObjectControlAdapter;
 import com.example.emc.Adapters.ObjectsAdapter;
+import com.example.emc.GObject;
+import com.example.emc.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,7 +65,9 @@ public class GalleryControlActivity extends AppCompatActivity {
 
     //Vars
     private GObject object = new GObject();
-    ObjectControlAdapter adapter;
+    private ObjectControlAdapter adapter;
+    ArrayList<GObject> objects;
+
     private String objectName = "", birthDie = "", details = "";
 
     @Override
@@ -81,9 +87,10 @@ public class GalleryControlActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference().child("Gallery");
 
 
-        ArrayList<GObject> objects = new ArrayList<>();
+        objects = new ArrayList<>();
         adapter = new ObjectControlAdapter(this, objects);
         listView.setAdapter(adapter);
+        listView.setTextFilterEnabled(true);
 
 
         databaseReference.addChildEventListener(new ChildEventListener() {
@@ -201,7 +208,39 @@ public class GalleryControlActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_object, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        MenuItem searchItem = menu.findItem(R.id.object_search);
+        EditText searchView = (EditText) searchItem.getActionView();
+        searchView.setHint("Search For An Object");
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int textlength = s.length();
+                ArrayList<GObject> tempArrayList = new ArrayList<>();
+                for(GObject c: objects){
+                    if (textlength <= c.getName().length()) {
+                        if (c.getName().toLowerCase().contains(s.toString().toLowerCase())) {
+                            tempArrayList.add(c);
+                        }
+                    }
+                }
+                ObjectControlAdapter mAdapter = new ObjectControlAdapter(getApplicationContext(), tempArrayList);
+                listView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        return true;
     }
 
     public class MyTask extends AsyncTask<String, Void, String>{

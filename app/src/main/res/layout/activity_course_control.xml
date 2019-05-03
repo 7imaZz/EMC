@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CourseControlActivity"
+    tools:context=".Activities.CourseControlActivity"
     android:background="@color/colorPrimary">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,6 +27,25 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:hint="Course Name"
+                android:textAlignment="center"
+                android:background="@drawable/shape_email"
+                android:layout_margin="10dp"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textColorHighlight="@color/white"
+                android:drawablePadding="10dp" />
+
+            <EditText
+                android:id="@+id/ed_course_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Course Cost"
+                android:inputType="number"
                 android:textAlignment="center"
                 android:background="@drawable/shape_email"
                 android:layout_margin="10dp"

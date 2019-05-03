@@ -16,9 +16,11 @@ import com.example.emc.GObject;
 import com.example.emc.ItemClickListener;
 import com.example.emc.Activities.ObjectActivity;
 import com.example.emc.R;
+import com.google.android.gms.common.data.DataHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ObjectsAdapter extends RecyclerView.Adapter<ObjectsAdapter.ObjectHolder>{
 
@@ -52,11 +54,17 @@ public class ObjectsAdapter extends RecyclerView.Adapter<ObjectsAdapter.ObjectHo
 
     private Context context;
     private ArrayList<GObject> objects;
+    private ArrayList<GObject> itemsCopy = new ArrayList<>();
 
 
     public ObjectsAdapter(Context context, ArrayList<GObject> objects) {
         this.context = context;
         this.objects = objects;
+        itemsCopy = objects;
+    }
+
+    public ObjectsAdapter() {
+
     }
 
     public ObjectsAdapter.ObjectHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -94,6 +102,11 @@ public class ObjectsAdapter extends RecyclerView.Adapter<ObjectsAdapter.ObjectHo
 
     public int getItemCount() {
         return objects.size();
+    }
+
+    public void updateList(ArrayList<GObject> list){
+        objects = list;
+        notifyDataSetChanged();
     }
 
 }

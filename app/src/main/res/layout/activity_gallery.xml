@@ -7,11 +7,18 @@
     android:orientation="vertical"
     tools:context=".Activities.GalleryActivity">
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_objects"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/pb_gloading"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@
     package="com.example.emc">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -11,10 +12,11 @@
         android:roundIcon="@mipmap/emc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CourseControlActivity"></activity>
-        <activity android:name=".EduControlActivity" />
-        <activity android:name=".GalleryControlActivity" />
-        <activity android:name=".EventControlActivity" />
+        <activity android:name=".CourseActivity"></activity>
+        <activity android:name=".Activities.CourseControlActivity" />
+        <activity android:name=".Activities.EduControlActivity" />
+        <activity android:name=".Activities.GalleryControlActivity" />
+        <activity android:name=".Activities.EventControlActivity" />
         <activity android:name=".Activities.ControlActivity" />
         <activity android:name=".Activities.ObjectActivity" />
         <activity

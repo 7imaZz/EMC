@@ -7,9 +7,6 @@ import android.support.v7.widget.CardView;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.emc.EduControlActivity;
-import com.example.emc.EventControlActivity;
-import com.example.emc.GalleryControlActivity;
 import com.example.emc.R;
 
 public class ControlActivity extends AppCompatActivity {

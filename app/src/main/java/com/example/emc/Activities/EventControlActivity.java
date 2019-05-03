@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Activities;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -7,25 +7,26 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputFilter;
+import android.text.Editable;
 import android.text.InputType;
-import android.view.LayoutInflater;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.google.android.gms.common.util.Clock;
+import com.example.emc.Adapters.EventAdapter;
+import com.example.emc.Adapters.ObjectControlAdapter;
+import com.example.emc.Event;
+import com.example.emc.GObject;
+import com.example.emc.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,8 @@ public class EventControlActivity extends AppCompatActivity {
 
     private ListView listView;
     private Event event = new Event();
+    private EventAdapter adapter;
+    private ArrayList<Event> events;
 
     //Declaring Firebase Vars
     private FirebaseDatabase firebaseDatabase;
@@ -60,8 +63,8 @@ public class EventControlActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Events");
 
-        ArrayList<Event> events = new ArrayList<>();
-        final EventAdapter adapter = new EventAdapter(this, events);
+        events = new ArrayList<>();
+        adapter = new EventAdapter(this, events);
         listView.setAdapter(adapter);
 
         databaseReference.addChildEventListener(new ChildEventListener() {
@@ -187,7 +190,7 @@ public class EventControlActivity extends AppCompatActivity {
                     event.setDescription(eventDescription.getText().toString());
                     event.setId(databaseReference.push().getKey());
                     databaseReference.child(event.getId()).setValue(event);
-
+                    Toast.makeText(getApplicationContext(), "Done!", Toast.LENGTH_SHORT).show();
 
                 }
             }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -204,6 +207,39 @@ public class EventControlActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_event, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.event_search);
+        EditText searchView = (EditText) searchItem.getActionView();
+        searchView.setHint("Search For An Event");
+
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                int textlength = s.length();
+                ArrayList<Event> tempArrayList = new ArrayList<>();
+                for(Event c: events){
+                    if (textlength <= c.getName().length()) {
+                        if (c.getName().toLowerCase().contains(s.toString().toLowerCase())) {
+                            tempArrayList.add(c);
+                        }
+                    }
+                }
+                EventAdapter mAdapter = new EventAdapter(getApplicationContext(), tempArrayList);
+                listView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
         return true;
     }
 

@@ -1,4 +1,4 @@
-package com.example.emc;
+package com.example.emc.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.emc.Event;
+import com.example.emc.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,11 +72,13 @@ public class EventAdapter extends ArrayAdapter<Event> {
                     going.setBackgroundResource(R.drawable.ic_star_black_24dp);
                     currentEvent.setPeopleNumber(currentEvent.getPeopleNumber()+1);
                     databaseReference.child(currentEvent.getId()).child("peopleNumber").setValue(currentEvent.getPeopleNumber());
+                    Toast.makeText(getContext(), "Going", Toast.LENGTH_SHORT).show();
                 } else{
                     currentEvent.setGoing(-1);
                     going.setBackgroundResource(R.drawable.ic_star_border_black_24dp);
                     currentEvent.setPeopleNumber(currentEvent.getPeopleNumber()-1);
                     databaseReference.child(currentEvent.getId()).child("peopleNumber").setValue(currentEvent.getPeopleNumber());
+                    Toast.makeText(getContext(), "Not Going", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -1,8 +1,5 @@
 package com.example.emc.Activities;
 
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.emc.Event;
-import com.example.emc.EventAdapter;
+import com.example.emc.Adapters.EventAdapter;
 import com.example.emc.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +25,7 @@ import java.util.ArrayList;
 public class EventsActivity extends AppCompatActivity {
 
     private ListView listView;
+    private ProgressBar progressBar;
 
     //Declaring Firebase Vars
     private FirebaseDatabase firebaseDatabase;
@@ -41,6 +40,7 @@ public class EventsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = findViewById(R.id.lv_showevents);
+        progressBar = findViewById(R.id.pb_eloading);
 
         ArrayList<Event> events = new ArrayList<>();
         final EventAdapter adapter = new EventAdapter(this, events);
@@ -65,6 +65,7 @@ public class EventsActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Event event = dataSnapshot.getValue(Event.class);
                 adapter.add(event);
+                progressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
